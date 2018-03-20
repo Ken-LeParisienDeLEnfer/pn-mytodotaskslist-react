@@ -1,1 +1,1 @@
-import FormulaireTacheContainer from "./components/container/FormulaireTacheContainer";
+import FormulaireTacheContainer from "./containers/FormulaireTacheContainer";

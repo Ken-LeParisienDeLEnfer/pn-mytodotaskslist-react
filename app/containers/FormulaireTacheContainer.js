@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import FormulaireTachePresentational from "../presentational/FormulaireTachePresentational"
+import FormulaireTachePresentational from "../components/FormulaireTachePresentational"
 
 class FormulaireTacheContainer extends Component {
     constructor() {
@@ -10,15 +10,22 @@ class FormulaireTacheContainer extends Component {
                 titre: "Titre"
             }
         };
+        console.log("constructor");
         this.handleChange = this.handleChange.bind(this);
+        this.handleCreateTask = this.handleCreateTask.bind(this);
     }
 
     handleChange(event) {
+        console.log('value :'+event.target.value);
         this.setState({[event.target.id]: event.target.value});
     }
 
+    handleCreateTask(event) {
+        console.log("Creer");
+    }
+
     render() {
-        const {tache} = this.state;
+        let {tache} = this.state;
         return (
             <form id="article-form">
                 <FormulaireTachePresentational
