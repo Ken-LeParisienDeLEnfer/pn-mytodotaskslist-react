@@ -1,0 +1,106 @@
+.form-task {
+    background-color: lavender;
+}
+
+.todo-tasks {
+    border-color: lightblue;
+    border-style: double;
+}
+
+.wip-tasks {
+    border-color: lightsalmon;
+    border-style: double;
+}
+
+.done-tasks {
+    border-color: lightgreen;
+    border-style: double;
+}
+
+.todo-task-titre {
+    margin-top: 10px;
+    background-color: lightgrey;
+}
+
+.wip-task-titre {
+    margin-top: 10px;
+    background-color: lightsalmon;
+}
+
+.done-task-titre {
+    margin-top: 10px;
+    background-color: lightgreen;
+}
+
+.tache-form, .tache-list {
+    background-color: white;
+    box-shadow: none;
+    min-height: 40px;
+    margin-bottom: 8px;
+    user-select: none;
+    color: rgb(77, 77, 77);
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    border-radius: 2px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: grey;
+    border-image: initial;
+    padding: 8px;
+    transition: background-color 0.1s ease;
+}
+
+.taches-list {
+    width: 100%;
+    padding-left: 0;
+}
+
+.prec {
+    width: 20%;
+}
+
+.suiv {
+    width: 20%;
+    display: block;
+    text-align: right;
+}
+
+.to-todo:hover {
+    background-color: lightgray;
+    color: white;
+    border: none;
+    border: 1px solid white;
+}
+
+.to-wip:hover {
+    background-color: lightsalmon;
+    color: white;
+    border: none;
+    border: 1px solid white;
+}
+
+.to-done:hover {
+    background-color: lightgreen;
+    color: white;
+    border: 1px solid white;
+}
+
+.tache-titre {
+    width: 60%;
+}
+
+.titre {
+    text-align: center;
+}
+
+.etat-btn {
+    background-color: white; /* Green */
+    border: 1px solid lightslategray;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
