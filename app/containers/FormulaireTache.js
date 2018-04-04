@@ -55,19 +55,31 @@ class FormulaireTache extends React.Component {
 
     render() {
         return (
-            <div className="tache-form">
-                <label className="col-sm-2 control-label" htmlFor="label-titre-formulaire">Titre</label>
-                    <form className="col-sm-10" onSubmit={this.handleSubmit}>
-                    <input
-                        type="text"
-                        label="label-titre-formulaire"
-                        className="form-control"
-                        id="titre"
-                        value={this.state.tache.titre}
-                        onChange={this.handleChangeTitre}
-                    />
-                    <input className="btn btn-primary" type="submit" value="Enregistrer"/>
-                </form>
+            <div>
+                <div className="titre-tache-form">
+                    Créer une tâche
+                </div>
+
+                        <form className="col-sm-12 form-horizontal" onSubmit={this.handleSubmit}>
+                            <div class="form-group">
+                                <label className="control-label col-sm-2" for="titre">Titre</label>
+                                <div className="col-sm-10">
+                                    <input
+                                        type="text"
+                                        label="label-titre-formulaire"
+                                        className="form-control"
+                                        id="titre"
+                                        value={this.state.tache.titre}
+                                        onChange={this.handleChangeTitre}
+                                    />
+                                </div>
+                            </div>
+                            <div className="form-group">
+                                <div className="col-sm-offset-2 col-sm-10">
+                                    <input className="btn btn-primary" type="submit" value="Enregistrer"/>
+                                </div>
+                            </div>
+                        </form>
             </div>
         )
     }

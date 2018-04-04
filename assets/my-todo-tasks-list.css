@@ -2,40 +2,53 @@
     background-color: lavender;
 }
 
+.titre-tache-form {
+    margin-top: 12px;
+    text-align: center;
+    margin-bottom: 10px;
+    color: black;
+}
+
 .todo-tasks {
-    border-color: lightblue;
+    border-color: white;
     border-style: double;
 }
 
 .wip-tasks {
-    border-color: lightsalmon;
+    border-color: white;
     border-style: double;
 }
 
 .done-tasks {
-    border-color: lightgreen;
+    border-color: white;
     border-style: double;
 }
 
 .todo-task-titre {
     margin-top: 10px;
-    background-color: lightgrey;
+    background-color: #757575;
+    text-align: center;
+    color: white;
 }
 
 .wip-task-titre {
     margin-top: 10px;
-    background-color: lightsalmon;
+    background-color: #FD5240;
+    text-align: center;
+    color: 	white;
 }
 
 .done-task-titre {
     margin-top: 10px;
     background-color: lightgreen;
+    text-align: center;
+    color: 	white;
 }
 
 .tache-form, .tache-list {
     background-color: white;
     box-shadow: none;
-    min-height: 40px;
+    min-height: 60px;
     margin-bottom: 8px;
     user-select: none;
     color: rgb(77, 77, 77);
@@ -47,7 +60,8 @@
     border-style: solid;
     border-color: grey;
     border-image: initial;
-    padding: 8px;
+    padding-left: 8px;
+    padding-right: 8px;
     transition: background-color 0.1s ease;
 }
 
@@ -67,27 +81,28 @@
 }
 
 .to-todo:hover {
-    background-color: lightgray;
-    color: white;
+    background-color: #757575;
+    color: 	white;
     border: none;
     border: 1px solid white;
 }
 
 .to-wip:hover {
-    background-color: lightsalmon;
-    color: white;
+    background-color: #FD5240;
+    color: 	white;
     border: none;
     border: 1px solid white;
 }
 
 .to-done:hover {
     background-color: lightgreen;
-    color: white;
+    color: 	white;
     border: 1px solid white;
 }
 
-.tache-titre {
+.info-tache-list {
     width: 60%;
+    min-height: 50px;
 }
 
 .titre {
@@ -95,7 +110,7 @@
 }
 
 .etat-btn {
-    background-color: white; /* Green */
+    background-color: white;
     border: 1px solid lightslategray;
     text-align: center;
     text-decoration: none;
@@ -103,4 +118,65 @@
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
+}
+
+.bloque-bouton {
+    background-color: white;
+    border: .3px ridge #F0CFFF;
+    border-radius: 50%;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 4px 2px;
+    cursor: pointer;
+    color: #F0CFFF;
+}
+
+.bloque-bouton:hover {
+    background-color: red;
+    color: white;
+    border: none;
+}
+
+
+.plus-bouton {
+    background-color: white;
+    border: .3px ridge #F0CFFF;
+    border-radius: 50%;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 4px 2px;
+    cursor: pointer;
+    color: #E0ECFF;
+}
+
+.plus-bouton:hover {
+    background-color: #1284e6;
+    color: white;
+    border: none;
+}
+
+.suppr-bouton {
+    background-color: white;
+    border: .3px ridge #F0CFFF;
+    border-radius: 50%;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 4px 2px;
+    cursor: pointer;
+    color: #cccccc82;
+}
+
+.suppr-bouton:hover {
+    background-color: #228B22;
+    color: white;
+    border: none;
+}
+
+.boutons-tache-list {
+    text-align: center;
+    max-height: 25px;
+    margin-top: -10px;
 }

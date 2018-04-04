@@ -6,7 +6,8 @@ export const ETATS = {
         btnPrecClassName : "hide",
         btnSuivClassName : "btn etat-btn to-wip",
         etatPrecedent: "TODO",
-        etatSuivant: "WIP"
+        etatSuivant: "WIP",
+        position: 1
     },
     WIP : {
         libelle : "WIP",
@@ -15,7 +16,8 @@ export const ETATS = {
         btnPrecClassName : "btn etat-btn to-todo",
         btnSuivClassName : "btn etat-btn to-done",
         etatPrecedent: "TODO",
-        etatSuivant: "DONE"
+        etatSuivant: "DONE",
+        position: 2
     },
     DONE: {
         libelle : "DONE",
@@ -24,6 +26,7 @@ export const ETATS = {
         btnPrecClassName : "btn etat-btn to-wip",
         btnSuivClassName : "hide",
         etatPrecedent: "WIP",
-        etatSuivant: "DONE"
+        etatSuivant: "DONE",
+        position: 3
     }
 };
