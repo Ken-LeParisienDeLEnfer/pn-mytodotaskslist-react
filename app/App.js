@@ -3,6 +3,7 @@ import { render } from 'react-dom';
 import TachesContainer from "./containers/TachesContainer";
 import "../assets/my-todo-tasks-list.css";
 import FormulaireTache from "./containers/FormulaireTache";
+import "../assets/favicon.ico";
 
 
 class App extends React.Component {

@@ -61,8 +61,8 @@ class FormulaireTache extends React.Component {
                 </div>
 
                         <form className="col-sm-12 form-horizontal" onSubmit={this.handleSubmit}>
-                            <div class="form-group">
-                                <label className="control-label col-sm-2" for="titre">Titre</label>
+                            <div className="form-group">
+                                <label className="control-label col-sm-2" htmlFor="titre">Titre</label>
                                 <div className="col-sm-10">
                                     <input
                                         type="text"
