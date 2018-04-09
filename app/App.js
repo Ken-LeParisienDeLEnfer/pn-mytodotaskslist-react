@@ -13,6 +13,8 @@ class App extends React.Component {
         this.state = { taches: [] } ;
         this.handleTacheEnregistree = this.handleTacheEnregistree.bind(this);
         this.handleModifierEtatTache = this.handleModifierEtatTache.bind(this);
+        this.handleBloquerTache = this.handleBloquerTache.bind(this);
+        this.handleSupprimerTache = this.handleSupprimerTache.bind(this);
     }
 
 
@@ -37,9 +39,6 @@ class App extends React.Component {
     }
 
     handleModifierEtatTache(tacheModifiee, etatSource, etatCible) {
-        console.log("Tache Modifiée :" + tacheModifiee);
-        console.log("Tache Modifiée : etat source : " + etatSource);
-        console.log("Tache Modifiée : etat cible : " + etatCible);
         let endPoint = 'http://127.0.0.1:3000/tache/' + tacheModifiee._id;
         var obj = {
             method: 'PUT',
@@ -54,20 +53,69 @@ class App extends React.Component {
         };
         debugger
         fetch(endPoint, obj).then(function (response) {
-            console.log(response);
             return response.json();
         }).then((result) => {
             let tachesMisesAJour = this.state.taches
-            debugger;
             tachesMisesAJour = tachesMisesAJour.filter((tache) => tache._id !== result._id);
             tachesMisesAJour.push(result);
             this.setState((previousState) => {
                 previousState.taches = tachesMisesAJour;
                 return previousState;
             });
-            console.log(result);
         }).catch((err) => {
             console.log("Erreur lors de la mise à jour de la tâche" + err);
+        });
+    }
+
+    handleSupprimerTache(tache) {
+        let endPoint = 'http://127.0.0.1:3000/tache/' + tache._id;
+        var obj = {
+            method: 'DELETE',
+            mode: 'CORS'
+        };
+        fetch(endPoint, obj).then(function (response) {
+            return response;
+        }).then((result) => {
+            var idTacheSupprimee = result.url.split("/")[4];
+            let tachesMisesAJour = this.state.taches
+            tachesMisesAJour = tachesMisesAJour.filter((tache) => tache._id !== idTacheSupprimee);
+            tachesMisesAJour.push(result);
+            this.setState((previousState) => {
+                previousState.taches = tachesMisesAJour;
+                return previousState;
+            });
+        }).catch((err) => {
+            console.log("Erreur lors de la suppression de la tâche" + err);
+        });
+    }
+
+    handleBloquerTache(tache) {
+        let estBloquee = !tache.bloque;
+        let endPoint = 'http://127.0.0.1:3000/tache/' + tache._id;
+        var obj = {
+            method: 'PUT',
+            mode: 'CORS',
+            headers: {
+                'Accept': 'application/json',
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify({
+                bloque : estBloquee
+            })
+        };
+        debugger
+        fetch(endPoint, obj).then(function (response) {
+            return response.json();
+        }).then((result) => {
+            let tachesMisesAJour = this.state.taches
+            tachesMisesAJour = tachesMisesAJour.filter((tache) => tache._id !== result._id);
+            tachesMisesAJour.push(result);
+            this.setState((previousState) => {
+                previousState.taches = tachesMisesAJour;
+                return previousState;
+            });
+        }).catch((err) => {
+            console.log("Erreur lors de la mise à jour de la tâche bloquee" + err);
         });
     }
 
@@ -77,26 +125,10 @@ class App extends React.Component {
                 <div className="col-sm-3 form-task">
                     <FormulaireTache onTacheEnregistree={this.handleTacheEnregistree} />
                 </div>
-                <TachesContainer taches={this.state.taches} onModifierEtatTache={this.handleModifierEtatTache}/>
-                {/*
-                <ListeTaches classNameConteneur={ETATS[etat].conteneurClassName}
-                                 typeSection={ETATS[etat]}
-                                 taches={taches}
-                                 onClickChangerEtat={this.handleEtatSuivant}/>
-
-                <ListeTaches classNameConteneur="col-sm-3 todo-tasks"
-                                 typeSection={ETATS.TODO}
-                                 taches={this.state.tachesTODO}
-                                 onClickChangerEtat={this.handleEtatSuivant}/>
-
-                    <ListeTaches classNameConteneur="col-sm-3 wip-tasks"
-                                 typeSection={ETATS.WIP}
-                                 taches={this.state.tachesWIP}
-                                 onClickChangerEtat={this.handleEtatSuivant}/>
-
-                    <ListeTaches typeSection={ETATS.DONE}
-                                 taches={this.state.tachesDONE}
-                                 onClickChangerEtat={this.handleEtatSuivant}/> */}
+                <TachesContainer taches={this.state.taches}
+                                 onModifierEtatTache={this.handleModifierEtatTache}
+                                 onBloquerTache={this.handleBloquerTache}
+                                 onSupprimerTache={this.handleSupprimerTache}/>
             </div>
         );
     }

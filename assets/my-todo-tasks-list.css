@@ -107,6 +107,7 @@ form.col-sm-12.form-horizontal {
 
 .info-tache-list {
     width: 60%;
+    flex-grow: 1;
     min-height: 50px;
 }
 
@@ -135,6 +136,16 @@ form.col-sm-12.form-horizontal {
     margin: 4px 2px;
     cursor: pointer;
     color: #F0CFFF;
+}
+
+.est-bloquee {
+    background-color: red;
+    color: white;
+}
+
+.est-bloquee:hover {
+    background-color: white !important;
+    color: #F0CFFF !important;
 }
 
 .bloque-bouton:hover {
@@ -184,4 +195,9 @@ form.col-sm-12.form-horizontal {
     text-align: center;
     max-height: 30px;
     margin-top: -10px;
+}
+
+.tache {
+    display: flex;
+    width: 100%;
 }

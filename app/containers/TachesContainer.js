@@ -9,12 +9,6 @@ class TachesContainer extends React.Component {
 
     constructor(props) {
         super(props);
-        this.handleEtatSuivant = this.handleEtatSuivant.bind(this);
-    }
-
-    handleEtatSuivant(tache, etatSource, etatCible) {
-        console.log("Taches container : handleClickEtatSuivant");
-        this.props.onModifierEtatTache(tache, etatSource, etatCible);
     }
 
     render() {
@@ -24,16 +18,16 @@ class TachesContainer extends React.Component {
             etats.push(ETATS[key]);
         });
         tachesList = this.props.taches;
-        console.log(tachesList);
         return (
             <div>
                 {etats.map((etat, index) => {
-                    var tachesParEtat = [];
-                    console.log(etat.libelle);
-                    tachesParEtat = tachesList.filter( tache => tache.etat === etat.libelle);
+                    var tachesParEtat = tachesList.filter( tache => tache.etat === etat.libelle);
                     return  <ListeTaches key={index} typeSection={etat}
                                          taches={tachesParEtat}
-                                         onClickChangerEtat={this.handleEtatSuivant}/>
+                                         onModifierEtatTache={this.props.onModifierEtatTache}
+                                         onBloquerTache={this.props.onBloquerTache}
+                                         onDetailTache={this.props.onDetailTache}
+                                         onSupprimerTache={this.props.onSupprimerTache}/>
                 })}
             </div>
         )
@@ -43,7 +37,10 @@ class TachesContainer extends React.Component {
 
 TachesContainer.propTypes = {
     taches: PropTypes.array.isRequired,
-    onModifierEtatTache: PropTypes.func
+    onModifierEtatTache: PropTypes.func,
+    onBloquerTache: PropTypes.func,
+    onDetailTache: PropTypes.func,
+    onSupprimerTache: PropTypes.func
 };
 
 export default TachesContainer;
