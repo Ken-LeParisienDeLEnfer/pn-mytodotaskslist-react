@@ -139,8 +139,8 @@ form.col-sm-12.form-horizontal {
 }
 
 .est-bloquee {
-    background-color: red;
-    color: white;
+    background-color: white;
+    color: #DC143C;
 }
 
 .est-bloquee:hover {
@@ -149,8 +149,8 @@ form.col-sm-12.form-horizontal {
 }
 
 .bloque-bouton:hover {
-    background-color: red;
-    color: white;
+    background-color: white;
+    color: #DC143C;
     border: none;
 }
 
@@ -168,8 +168,8 @@ form.col-sm-12.form-horizontal {
 }
 
 .plus-bouton:hover {
-    background-color: #1284e6;
-    color: white;
+    background-color: white;
+    color: #1284e6;
     border: none;
 }
 
@@ -186,8 +186,8 @@ form.col-sm-12.form-horizontal {
 }
 
 .suppr-bouton:hover {
-    background-color: #228B22;
-    color: white;
+    background-color: white;
+    color: #228B22;
     border: none;
 }
 

@@ -40,7 +40,7 @@ class App extends React.Component {
 
     handleModifierEtatTache(tacheModifiee, etatSource, etatCible) {
         let endPoint = 'http://127.0.0.1:3000/tache/' + tacheModifiee._id;
-        var obj = {
+        let obj = {
             method: 'PUT',
             mode: 'CORS',
             headers: {
@@ -51,7 +51,6 @@ class App extends React.Component {
                 etat : etatCible
             })
         };
-        debugger
         fetch(endPoint, obj).then(function (response) {
             return response.json();
         }).then((result) => {
@@ -69,13 +68,14 @@ class App extends React.Component {
 
     handleSupprimerTache(tache) {
         let endPoint = 'http://127.0.0.1:3000/tache/' + tache._id;
-        var obj = {
+        let obj = {
             method: 'DELETE',
             mode: 'CORS'
         };
         fetch(endPoint, obj).then(function (response) {
             return response;
         }).then((result) => {
+            console.log(tache);
             var idTacheSupprimee = result.url.split("/")[4];
             let tachesMisesAJour = this.state.taches
             tachesMisesAJour = tachesMisesAJour.filter((tache) => tache._id !== idTacheSupprimee);
@@ -92,7 +92,7 @@ class App extends React.Component {
     handleBloquerTache(tache) {
         let estBloquee = !tache.bloque;
         let endPoint = 'http://127.0.0.1:3000/tache/' + tache._id;
-        var obj = {
+        let obj = {
             method: 'PUT',
             mode: 'CORS',
             headers: {
@@ -119,6 +119,17 @@ class App extends React.Component {
         });
     }
 
+    handleTacheEnregistree(tacheEnregistree) {
+        console.log("Tache enregistree : ");
+        console.log(tacheEnregistree);
+        let tachesMisesAJour = this.state.taches;
+        tachesMisesAJour.push(tacheEnregistree);
+        this.setState((previousState) => {
+            previousState.taches = tachesMisesAJour;
+            return previousState;
+        });
+    }
+
     render() {
         return (
             <div className="row">
@@ -131,18 +142,6 @@ class App extends React.Component {
                                  onSupprimerTache={this.handleSupprimerTache}/>
             </div>
         );
-    }
-
-
-    handleTacheEnregistree(tacheEnregistree) {
-        console.log("Tache enregistree : ");
-        console.log(tacheEnregistree);
-        let tachesMisesAJour = this.state.taches
-        tachesMisesAJour.push(tacheEnregistree);
-        this.setState((previousState) => {
-            previousState.taches = tachesMisesAJour;
-            return previousState;
-        });
     }
 }
 

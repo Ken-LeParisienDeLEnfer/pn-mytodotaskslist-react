@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
+import { InputTache } from '../presentational/formulaire/InputTache';
 
 class FormulaireTache extends React.Component {
 
@@ -61,19 +62,12 @@ class FormulaireTache extends React.Component {
                 </div>
 
                         <form className="col-sm-12 form-horizontal" onSubmit={this.handleSubmit}>
-                            <div className="form-group">
-                                <label className="control-label col-sm-2" htmlFor="titre">Titre</label>
-                                <div className="col-sm-10">
-                                    <input
-                                        type="text"
-                                        label="label-titre-formulaire"
-                                        className="form-control"
-                                        id="titre"
-                                        value={this.state.tache.titre}
-                                        onChange={this.handleChangeTitre}
-                                    />
-                                </div>
-                            </div>
+                            <InputTache inputType={'text'}
+                                    id={'titre'}
+                                    libelle={'Titre'}
+                                    value={this.state.tache.titre}
+                                    handleChangeTitre={this.handleChangeTitre} />
+
                             <div className="form-group">
                                 <div className="col-sm-offset-2 col-sm-10">
                                     <input className="btn btn-primary" type="submit" value="Enregistrer"/>
