@@ -4,10 +4,11 @@
   "description": "PN de gestion de tâches",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha --require babel-core/register --require ./test/helpers.js --require ./test/dom.js --require ignore-styles 'app/**/*.spec.js'",
     "start": "webpack-dev-server --mode development --open",
     "dev": "webpack-dev-server --mode development --watch",
-    "build": "webpack --mode development"
+    "build": "webpack --mode development",
+    "test:auto": "npm run test -- --watch"
   },
   "repository": {
     "type": "git",
@@ -30,10 +31,16 @@
     "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
+    "chai": "^4.1.2",
     "classnames": "^2.2.5",
     "css-loader": "^0.28.11",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.0.7",
+    "ignore-styles": "^5.0.1",
+    "jsdom": "^11.10.0",
+    "mocha": "^5.1.1",
     "ngx-bootstrap": "^2.0.3",
     "prop-types": "^15.6.1",
     "style-loader": "^0.20.3",

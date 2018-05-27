@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import { InputTache } from '../presentational/formulaire/InputTache';
+import {RadioBoutonsPriorite} from "../presentational/formulaire/RadioBoutonsPriorite";
+import {PRIORITES} from "../constants/PrioriteConstants";
 
 class FormulaireTache extends React.Component {
 
@@ -8,7 +10,8 @@ class FormulaireTache extends React.Component {
         super(props);
         this.state = {
             tache : {
-                titre : ""
+                titre : "",
+                priorite: "P1"
             }
         };
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -23,6 +26,10 @@ class FormulaireTache extends React.Component {
                 titre :event.target.value
             }
         });
+    }
+
+    handleChangePriorite(event) {
+        console.log("handleChangePriorite: " + event);
     }
 
     handleSubmit(event) {
@@ -55,6 +62,11 @@ class FormulaireTache extends React.Component {
     }
 
     render() {
+        let priorites = [];
+        Object.keys(PRIORITES).forEach((key) => {
+            priorites.push(PRIORITES[key]);
+        });
+        console.log(priorites);
         return (
             <div>
                 <div className="titre-tache-form">
@@ -67,7 +79,10 @@ class FormulaireTache extends React.Component {
                                     libelle={'Titre'}
                                     value={this.state.tache.titre}
                                     handleChangeTitre={this.handleChangeTitre} />
-
+                            <RadioBoutonsPriorite optionsPriorite={priorites}
+                                                  selectedOptions={this.state.tache.priorite}
+                                                  handleChangePriorite={this.handleChangePriorite}
+                                                  libelle={'Priorité'}/>
                             <div className="form-group">
                                 <div className="col-sm-offset-2 col-sm-10">
                                     <input className="btn btn-primary" type="submit" value="Enregistrer"/>
