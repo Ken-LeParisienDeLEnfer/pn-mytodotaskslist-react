@@ -15,18 +15,20 @@ class ListeTaches extends React.Component {
         <div className={this.props.typeSection.conteneurClassName}>
                 <p className={this.props.typeSection.titreSectionClassName}>{this.props.typeSection.libelle}</p>
                 <ul className="taches-list">
-                    {this.props.taches.map( (tache, index) => {
-                        return (
-                            <TacheListe key={index}
-                                        tache={tache}
-                                        etat={this.props.typeSection}
-                                        onModifierEtatTache={this.props.onModifierEtatTache}
-                                        onBloquerTache={this.props.onBloquerTache}
-                                        onDetailTache={this.props.onDetailTache}
-                                        onSupprimerTache={this.props.onSupprimerTache}/>
-                        );
+                    {this.props.taches
+                        .sort((tacheA, tacheB) => {
+                            return tacheA.priorite > tacheB.priorite
+                        }).map( (tache, index) => {
+                            return (
+                                <TacheListe key={index}
+                                            tache={tache}
+                                            etat={this.props.typeSection}
+                                            onModifierEtatTache={this.props.onModifierEtatTache}
+                                            onBloquerTache={this.props.onBloquerTache}
+                                            onDetailTache={this.props.onDetailTache}
+                                            onSupprimerTache={this.props.onSupprimerTache}/>
+                            );
                     })}
-
                 </ul>
             </div>
         );

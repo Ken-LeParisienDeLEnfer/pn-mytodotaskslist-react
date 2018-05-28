@@ -9,27 +9,27 @@ class FormulaireTache extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            tache : {
                 titre : "",
-                priorite: "P1"
-            }
+                priorite: 5
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChangeTitre = this.handleChangeTitre.bind(this);
+        this.handleChangePriorite = this.handleChangePriorite.bind(this);
 
     }
 
     handleChangeTitre(event) {
         console.log("handleChangeTitre: " + event);
         this.setState({
-            tache : {
-                titre :event.target.value
-            }
+            titre: event.target.value
         });
     }
 
     handleChangePriorite(event) {
-        console.log("handleChangePriorite: " + event);
+        console.log("handleChangePriorite: " + event.target.value);
+        this.setState({
+            priorite: parseInt(event.target.value)
+        });
     }
 
     handleSubmit(event) {
@@ -40,7 +40,8 @@ class FormulaireTache extends React.Component {
                 'Content-type': 'application/json'
             },
             body: JSON.stringify({
-                titre : this.state.tache.titre
+                titre: this.state.titre,
+                priorite: this.state.priorite
             })
         };
         fetch('http://127.0.0.1:3000/tache/', obj).then(function (response) {
@@ -49,10 +50,9 @@ class FormulaireTache extends React.Component {
         }).then((result) => {
             console.log(result);
             this.setState({
-                tache: {
-                    titre: ''
-                }
-            })
+                titre: '',
+                priorite: 5
+            });
             this.props.onTacheEnregistree(result);
         }).catch((err) => {
             console.log("Erreur lors de l'enregistrement de la tâche" + err);
@@ -77,10 +77,10 @@ class FormulaireTache extends React.Component {
                             <InputTache inputType={'text'}
                                     id={'titre'}
                                     libelle={'Titre'}
-                                    value={this.state.tache.titre}
+                                    value={this.state.titre}
                                     handleChangeTitre={this.handleChangeTitre} />
                             <RadioBoutonsPriorite optionsPriorite={priorites}
-                                                  selectedOptions={this.state.tache.priorite}
+                                                  selectedOptions={this.state.priorite}
                                                   handleChangePriorite={this.handleChangePriorite}
                                                   libelle={'Priorité'}/>
                             <div className="form-group">

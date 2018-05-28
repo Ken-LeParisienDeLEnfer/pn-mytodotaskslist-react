@@ -7,14 +7,13 @@ export const RadioBoutonsPriorite = (props) => (
         <label className="control-label col-sm-2">{props.libelle}</label>
         <div className="col-sm-10">
             {props.optionsPriorite.map(opt => {
-                console.log(props.selectedOptions);
                 return (
                     <label key={opt.libelle} className="radio-inline container-priorite">
                         <input
                             name="priorite"
                             onChange={props.handleChangePriorite}
                             value={opt.valeur}
-                            checked={ props.selectedOptions.indexOf(opt.valeur) > -1 }
+                            checked={ props.selectedOptions === opt.valeur }
                             type="radio" /> {opt.libelle}
                         <span className={opt.className}></span>
                     </label>
@@ -25,7 +24,7 @@ export const RadioBoutonsPriorite = (props) => (
 );
 
 RadioBoutonsPriorite.propTypes = {
-    selectedOptions: PropTypes.string,
+    selectedOptions: PropTypes.number,
     optionsPriorite: PropTypes.array.isRequired,
     handleChangePriorite: PropTypes.func.isRequired,
     libelle: PropTypes.string.isRequired

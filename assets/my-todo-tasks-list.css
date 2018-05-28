@@ -207,10 +207,12 @@ form.col-sm-12.form-horizontal {
     position: absolute;
     top: 0;
     left: 0;
-    height: 25px;
-    width: 25px;
-    background-color: #eee;
+    height: 15px;
+    width: 15px;
+    background-color: white;
     border-radius: 50%;
+    margin-top: 7px;
+    margin-left: 8px;
 }
 
 /* On mouse-over, add a grey background color */
@@ -228,6 +230,16 @@ form.col-sm-12.form-horizontal {
     background-color: orange;
 }
 
+/* On mouse-over, add a grey background color */
+.container-priorite:hover input ~ .checkmark.p3, .container-priorite input:checked ~ .checkmark.p3 {
+    background-color: springgreen;
+}
+
+/* On mouse-over, add a grey background color */
+.container-priorite:hover input ~ .checkmark.p4, .container-priorite input:checked ~ .checkmark.p4 {
+    background-color: dodgerblue;
+}
+
 
 /* Create the indicator (the dot/circle - hidden when not checked) */
 .checkmark:after {
@@ -242,10 +254,10 @@ form.col-sm-12.form-horizontal {
 }
 
 label.radio-inline.container-priorite {
-    padding-left: 35px;
+    padding-left: 30px;
     padding-top: 5px;
 }
 
 .radio-inline input[type=radio] {
-    margin-left: -30px;
+    margin-left: -20px;
 }
