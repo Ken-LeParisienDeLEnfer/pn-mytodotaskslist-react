@@ -42,7 +42,6 @@ class App extends React.Component {
         let endPoint = 'http://127.0.0.1:3000/tache/' + tacheModifiee._id;
         let obj = {
             method: 'PUT',
-            mode: 'CORS',
             headers: {
                 'Accept': 'application/json',
                 'Content-type': 'application/json'
@@ -69,8 +68,7 @@ class App extends React.Component {
     handleSupprimerTache(tache) {
         let endPoint = 'http://127.0.0.1:3000/tache/' + tache._id;
         let obj = {
-            method: 'DELETE',
-            mode: 'CORS'
+            method: 'DELETE'
         };
         fetch(endPoint, obj).then(function (response) {
             return response;
@@ -94,7 +92,6 @@ class App extends React.Component {
         let endPoint = 'http://127.0.0.1:3000/tache/' + tache._id;
         let obj = {
             method: 'PUT',
-            mode: 'CORS',
             headers: {
                 'Accept': 'application/json',
                 'Content-type': 'application/json'
